@@ -3,165 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afrique Horizon | Guide Immigration & Études 2026</title>
+    <title>Afrique Horizon | Guide 2026</title>
     
-    <meta name="description" content="Afrique Horizon: Votre guide n°1 pour l'immigration au Canada, bourses d'études en France, et opportunités business 2026. Utilisez notre simulateur gratuit !">
-    <meta name="keywords" content="Immigration Canada 2026, Bourse Eiffel, Étudier en France, Visa Business, Simulateur d'immigration, Afrique Horizon">
-    <meta name="author" content="Afrique Horizon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <meta property="og:title" content="Afrique Horizon | Réussissez votre projet d'expatriation">
-    <meta property="og:description" content="Guide complet et simulateur de chances gratuit pour 2026.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1526253038957-bce54e05968e?auto=format&fit=crop&w=800">
-    <meta property="og:url" content="https://ryadh202431-creator.github.io/afrique-horizon/">
-
     <style>
         :root {
-            --primary: #2c3e50;
-            --accent: #e67e22;
-            --light: #f4f7f6;
+            --navy: #1a2a3a; /* اللون الكحلي الجديد */
+            --accent: #e67e22; /* البرتقالي الاحترافي */
+            --bg-light: #f8fafc;
             --white: #ffffff;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background: var(--light); color: var(--primary); line-height: 1.6; }
-        
-        header { background: var(--primary); color: var(--white); padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
-        header h1 { font-size: 2.5rem; text-transform: uppercase; }
-        header h1 span { color: var(--accent); }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, sans-serif; }
+        body { background: var(--bg-light); color: var(--navy); }
 
-        nav { background: #1a252f; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: center; flex-wrap: wrap; padding: 10px; }
-        nav button { background: none; border: none; color: white; padding: 10px 15px; cursor: pointer; font-weight: bold; transition: 0.3s; }
-        nav button:hover, nav button.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+        /* Professional Text Logo Header */
+        header { 
+            background: var(--navy); 
+            color: var(--white); 
+            padding: 50px 20px; 
+            text-align: center;
+            background-image: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 100%);
+        }
+        .logo-box {
+            display: inline-block;
+            border: 3px solid var(--accent);
+            padding: 10px 20px;
+            margin-bottom: 15px;
+        }
+        header h1 { font-size: 2.2rem; letter-spacing: 2px; }
+        header span { color: var(--accent); }
 
-        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+        nav { background: #0f172a; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: center; padding: 10px; overflow-x: auto; }
+        nav button { background: none; border: none; color: #94a3b8; padding: 10px 15px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.3s; white-space: nowrap; }
+        nav button:hover, nav button.active { color: var(--white); }
 
-        /* Simulator Style */
-        .simulator { background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin-bottom: 30px; border-left: 8px solid var(--accent); }
-        .simulator h2 { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        select, button.analyze { width: 100%; padding: 15px; margin: 10px 0; border-radius: 8px; border: 1px solid #ddd; font-size: 1rem; }
-        button.analyze { background: var(--accent); color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.5s; }
-        button.analyze:hover { background: #d35400; transform: translateY(-2px); }
+        .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
 
-        #result { margin-top: 20px; padding: 15px; border-radius: 8px; display: none; background: #e8f6f3; border: 1px dashed #27ae60; }
+        /* Simulator Box - Professional Navy Theme */
+        .simulator { 
+            background: var(--white); 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            border-top: 5px solid var(--accent);
+        }
+        .simulator h2 { 
+            font-size: 1.5rem; 
+            margin-bottom: 20px; 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            color: var(--navy);
+        }
+        .simulator i { color: var(--accent); } /* أيقونة الخريطة */
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .card { background: var(--white); padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { color: var(--accent); margin-bottom: 10px; font-size: 1.2rem; }
-        .tag { display: inline-block; background: #eee; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; }
+        select, .analyze-btn { 
+            width: 100%; 
+            padding: 14px; 
+            margin: 10px 0; 
+            border-radius: 8px; 
+            border: 2px solid #e2e8f0; 
+            font-size: 1rem;
+            outline: none;
+        }
+        select:focus { border-color: var(--accent); }
 
-        footer { text-align: center; padding: 40px; background: var(--primary); color: white; margin-top: 50px; }
+        .analyze-btn { 
+            background: var(--navy); /* تغيير لون الزر للكحلي */
+            color: white; 
+            border: none; 
+            font-weight: 700; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+        .analyze-btn:hover { background: #000; transform: translateY(-2px); }
 
-        /* Floating WhatsApp Button */
-        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 2000; display: flex; align-items: center; gap: 10px; }
+        #result { 
+            margin-top: 20px; 
+            padding: 20px; 
+            border-radius: 8px; 
+            display: none; 
+            background: #f1f5f9; 
+            border-left: 5px solid var(--accent);
+            font-weight: 500;
+        }
+
+        /* News Section */
+        .section-title { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-size: 1.3rem; 
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .section-title i { color: #f1c40f; } /* أيقونة البرق */
+
+        .card { 
+            background: var(--white); 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid #f1f5f9;
+        }
+        .card h3 { font-size: 1.1rem; margin-bottom: 8px; color: var(--navy); }
+        .tag { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; }
+
+        footer { text-align: center; padding: 40px; background: var(--navy); color: #94a3b8; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>AFRIQUE <span>HORIZON</span></h1>
-    <p>Le guide n°1 pour votre réussite et expatriation en 2026</p>
+    <div class="logo-box">
+        <h1>AFRIQUE <span>HORIZON</span></h1>
+    </div>
+    <p>Expert en Immigration & Opportunités 2026</p>
 </header>
 
-<nav id="navBar">
-    <button onclick="filterArticles('TOUT')" class="active">ACCUEIL</button>
-    <button onclick="filterArticles('ÉDUCATION')">ÉDUCATION</button>
-    <button onclick="filterArticles('TECHNOLOGIE')">TECHNOLOGIE</button>
-    <button onclick="filterArticles('BUSINESS')">BUSINESS</button>
-    <button onclick="filterArticles('IMMIGRATION')">IMMIGRATION</button>
+<nav>
+    <button onclick="window.location.reload()" class="active">ACCUEIL</button>
+    <button>IMMIGRATION</button>
+    <button>ÉDUCATION</button>
+    <button>BUSINESS</button>
+    <button>TECH</button>
 </nav>
 
 <div class="container">
     <section class="simulator">
-        <h2>🌍 Simulateur de Chances 2026</h2>
-        <p>Découvrez vos meilleures opportunités en une minute :</p>
-        <select id="edu">
+        <h2><i class="fas fa-globe-africa"></i> Simulateur de Chances</h2>
+        <p style="color: #64748b; margin-bottom: 20px;">Analysez votre profil pour l'expatriation :</p>
+        
+        <select id="eduLevel">
             <option value="">-- Votre Niveau d'études --</option>
-            <option value="bac">Baccalauréat</option>
-            <option value="licence">Licence / Master</option>
-            <option value="doctorat">Doctorat</option>
+            <option value="3">Doctorat / Chercheur</option>
+            <option value="2">Master / Ingénieur</option>
+            <option value="1">Licence / Technicien</option>
+            <option value="0">Baccalauréat ou moins</option>
         </select>
-        <select id="lang">
+
+        <select id="langLevel">
             <option value="">-- Niveau en Français --</option>
-            <option value="a1">Débutant (A1/A2)</option>
-            <option value="b2">Intermédiaire (B1/B2)</option>
-            <option value="c1">Avancé (C1/C2)</option>
+            <option value="3">Avancé (C1/C2)</option>
+            <option value="2">Intermédiaire (B2)</option>
+            <option value="1">Seuil (B1)</option>
+            <option value="0">Débutant</option>
         </select>
-        <button class="analyze" onclick="runSim()">ANALYSER MON PROFIL</button>
+
+        <button class="analyze-btn" onclick="calculateProfile()">Analyser mon profil</button>
+        
         <div id="result"></div>
     </section>
 
-    <div class="grid" id="newsGrid"></div>
+    <h2 class="section-title"><i class="fas fa-bolt"></i> À la Une aujourd'hui</h2>
+    <div id="articlesGrid">
+        </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 Afrique Horizon - Tous droits réservés.</p>
+    <p>&copy; 2026 AFRIQUE HORIZON. Tous droits réservés.</p>
 </footer>
 
-<a href="https://wa.me/212600000000" class="whatsapp-float" target="_blank">
-    <span>💬 Contactez un Expert</span>
-</a>
-
 <script>
-    const categories = ['ÉDUCATION', 'TECHNOLOGIE', 'BUSINESS', 'IMMIGRATION'];
-    const articles = [];
+    function calculateProfile() {
+        const edu = document.getElementById('eduLevel').value;
+        const lang = document.getElementById('langLevel').value;
+        const resBox = document.getElementById('result');
 
-    // Generating 100 Articles
-    for(let i=1; i<=100; i++) {
-        let cat = categories[i % 4];
-        articles.push({
-            id: i,
-            category: cat,
-            title: `Opportunité ${cat} n°${i} : Guide Complet 2026`,
-            desc: `Découvrez comment réussir dans le domaine ${cat.toLowerCase()} cette année avec nos conseils experts.`
-        });
-    }
+        if(edu === "" || lang === "") {
+            alert("Veuillez sélectionner votre profil");
+            return;
+        }
 
-    function displayArticles(data) {
-        const grid = document.getElementById('newsGrid');
-        grid.innerHTML = '';
-        data.forEach(art => {
-            grid.innerHTML += `
-                <div class="card">
-                    <span class="tag">${art.category}</span>
-                    <h3>${art.title}</h3>
-                    <p>${art.desc}</p>
-                    <a href="#" style="color:var(--accent); text-decoration:none; font-size:0.9rem; font-weight:bold;">Lire la suite →</a>
-                </div>
-            `;
-        });
-    }
+        const score = parseInt(edu) + parseInt(lang);
+        resBox.style.display = "block";
 
-    function filterArticles(cat) {
-        // Update active button
-        document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-
-        if(cat === 'TOUT') {
-            displayArticles(articles);
+        if(score >= 5) {
+            resBox.innerHTML = "🏆 <strong>Profil Excellent :</strong> Vos chances pour le Canada et l'Europe sont de 95%. Nous vous recommandons de préparer votre dossier immédiatement.";
+        } else if(score >= 3) {
+            resBox.innerHTML = "📈 <strong>Profil Compétitif :</strong> Bonnes chances. Un score B2/C1 en langue est votre clé de succès.";
         } else {
-            const filtered = articles.filter(a => a.category === cat);
-            displayArticles(filtered);
+            resBox.innerHTML = "🔍 <strong>Conseil d'expert :</strong> Nous vous suggérons d'améliorer votre niveau de langue pour augmenter vos points d'immigration.";
         }
     }
 
-    function runSim() {
-        const e = document.getElementById('edu').value;
-        const l = document.getElementById('lang').value;
-        const res = document.getElementById('result');
-        
-        if(!e || !l) { alert("Veuillez remplir tous les champs"); return; }
-        
-        res.style.display = "block";
-        if(l === 'c1' || e === 'doctorat') {
-            res.innerHTML = "<strong>✅ Excellentes Chances :</strong> Votre profil est prioritaire pour le Canada et les bourses d'excellence en Europe.";
-        } else {
-            res.innerHTML = "<strong>📈 Profil Intéressant :</strong> Nous vous conseillons de renforcer votre score linguistique pour maximiser vos chances.";
-        }
-    }
+    // توليد مقالات تجريبية بشكل احترافي
+    const news = [
+        { cat: "Immigration", title: "Nouveau tirage Express Canada : 3000 invitations envoyées" },
+        { cat: "Éducation", title: "Bourses France 2026 : Ouverture des candidatures Campus France" },
+        { cat: "Business", title: "Investir au Sénégal : Les 5 secteurs porteurs cette année" }
+    ];
 
-    // Initial load
-    displayArticles(articles);
+    const grid = document.getElementById('articlesGrid');
+    news.forEach(item => {
+        grid.innerHTML += `
+            <div class="card">
+                <span class="tag">${item.cat}</span>
+                <h3>${item.title}</h3>
+                <p style="color:#64748b; font-size:0.9rem;">Consultez les détails et les critères d'éligibilité pour cette opportunité...</p>
+            </div>
+        `;
+    });
 </script>
 
 </body>
